@@ -42,5 +42,14 @@ router.post('/reg',(req,res)=>{
   })
 })
 
+// 4.后台管理 用户列表
+router.get('/list',(req,res)=>{
+  let sql=`select*from cwr_user`;
+  pool.query(sql,(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
 //导出路由器
 module.exports=router;
