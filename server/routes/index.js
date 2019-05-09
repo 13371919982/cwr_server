@@ -11,7 +11,7 @@ router.get('/index_carousel',(req,res)=>{
   })
 })
 
-// 2.index_pic 接口
+// 2.index_pic iid_id=1 接口 
 router.get('/index_pic',(req,res)=>{
   let sql='select*from cwr_index_pic';
   pool.query(sql,(err,result)=>{

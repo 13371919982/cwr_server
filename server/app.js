@@ -13,7 +13,7 @@ const newsRouter = require('./routes/news');
 
 // 创建web服务器
 var app = express();
-app.listen( 3000);
+app.listen(3000);
 
 // cloudo静态资源
 app.use( express.static('cwr'));
