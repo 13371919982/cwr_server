@@ -27,12 +27,12 @@ router.get('/list',(req,res)=>{
 
 // 3.price 价格
 router.get('/price',(req,res)=>{
-  let min_price=req.query.min_price;
-  let max_price=req.query.max_price;
-  !min_price?min_price=0:parseInt(min_price);
-  !max_price?max_price=99999:parseInt(max_price);
+  let minPrice=req.query.minPrice;
+  let maxPrice=req.query.maxPrice;
+  !minPrice?minPrice=0:parseInt(minPrice);
+  !maxPrice?maxPrice=99999:parseInt(maxPrice);
   let sql='select*from cwr_laptop where price between ? and ?';
-  pool.query(sql,[min_price,max_price],(err,result)=>{
+  pool.query(sql,[minPrice,maxPrice],(err,result)=>{
     if(err) throw err;
     if(result.length>0)
       res.send(result);
