@@ -13,9 +13,9 @@ router.post('/login',(req,res)=>{
   pool.query(sql,[uname,upwd],(err,result)=>{
     if(err) throw err;
     if(result.length>0)
-      res.send('1');
+      res.send('登录成功');
     else
-      res.send('用户名或密码错误');
+      res.send('1');
   });
 });
 
@@ -26,9 +26,9 @@ router.get('/code',(req,res)=>{
   pool.query(sql,[uname],(err,result)=>{
     if(err) throw err;
     if(result.length>0){
-      res.send('1')
+      res.send('用户名被占用')
     }else{
-      res.send('0')
+      res.send('1')
     }
   })
 })
