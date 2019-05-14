@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+// const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const session = require('express-session');
 const userRouter = require('./routes/user');
@@ -22,6 +23,16 @@ app.use( express.static('cwr'));
 app.use( bodyParser.urlencoded({
   extended: false
 }));
+
+// 使用cookie-parser中间件
+// app.use( cookieParser());
+// 获取cookie
+// app.use((req,res,next)=>{
+//   if(req.cookies.uname){
+//     req.uname=JSON.parse(req.cookies.uname);
+//   }
+//   next();
+// })
 
 // 跨域
 app.use( cors({
