@@ -42,7 +42,7 @@ router.post('/reg',(req,res)=>{
   let sql='insert into cwr_user set ?';
   pool.query(sql,[req.body],(err,result)=>{
     if(err) throw err;
-    res.send('恭喜！注册成功');
+    res.send('1');
   })
 })
 
