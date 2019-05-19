@@ -1,15 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const session = require('express-session');
-const userRouter = require('./routes/user');
-const indexRouter = require('./routes/index');
-const productRouter = require('./routes/product');
-const detailRouter = require('./routes/detail');
+const user = require('./routes/user');
+const index = require('./routes/index');
+const product = require('./routes/product');
+const detail = require('./routes/detail');
+const shoppingcart = require('./routes/shoppingcart');
 
 /****** APP ******/
-const newsRouter = require('./routes/news');
+const news = require('./routes/news');
 
 
 // 创建web服务器
@@ -23,16 +23,6 @@ app.use( express.static('cwr'));
 app.use( bodyParser.urlencoded({
   extended: false
 }));
-
-// 使用cookie-parser中间件
-// app.use( cookieParser());
-// 获取cookie
-// app.use((req,res,next)=>{
-//   if(req.cookies.uname){
-//     req.uname=JSON.parse(req.cookies.uname);
-//   }
-//   next();
-// })
 
 // 跨域
 app.use( cors({
@@ -48,15 +38,17 @@ app.use(session({
 }))
 
 // 用户挂载
-app.use( '/user', userRouter);
+app.use( '/user', user);
 // 主页挂载
-app.use( '/index', indexRouter);
+app.use( '/index', index);
 // 商品挂载
-app.use( '/product', productRouter);
+app.use( '/product', product);
 // 详情页挂载
-app.use( '/detail', detailRouter);
+app.use( '/detail', detail);
+// 购物车挂载
+app.use( '/shoppingcart', shoppingcart);
 
 /****** APP ******/
-app.use( '/news', newsRouter);
+app.use( '/news', news);
 
 

@@ -32,4 +32,13 @@ router.get('/like',(req,res)=>{
   })
 })
 
+// 4./addcar 加入购物车
+router.get('/addcar',(req,res)=>{
+  let sql='insert into cwr_shoppingcart_item set ?';
+  pool.query(sql,[req.query],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
 module.exports=router;

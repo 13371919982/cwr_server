@@ -13,9 +13,6 @@ router.post('/login',(req,res)=>{
   pool.query(sql,[uname,upwd],(err,result)=>{
     if(err) throw err;
     if(result.length>0){
-      // res.cookie('uname',JSON.stringify(uname),{
-      //   maxAge:9000000
-      // })
       res.send(uname);
     }
     else
@@ -46,9 +43,7 @@ router.post('/reg',(req,res)=>{
   })
 })
 
-// 4.用户注销 清除cookie
-
-// 5.后台管理 用户列表
+// 4.后台管理 用户列表
 router.get('/list',(req,res)=>{
   let sql=`select*from cwr_user`;
   pool.query(sql,(err,result)=>{

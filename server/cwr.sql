@@ -12,14 +12,14 @@ CREATE TABLE cwr_user(
   email VARCHAR(64),           #用户邮箱
   phone VARCHAR(16),           #用户号码
   user_name VARCHAR(32),       #真实姓名
-  gender INT                  #用户性别  0-女  1-男
+  gender INT                   #用户性别  0-女  1-男
 );
 
 /** 首页轮播广告商品 **/
 CREATE TABLE cwr_index_carousel(
   cid INT PRIMARY KEY AUTO_INCREMENT, 
   img VARCHAR(128),            #图片路径
-  title VARCHAR(64)           #标题
+  title VARCHAR(64)            #标题
 );
 
 /*** 首页商品 ***/
@@ -36,7 +36,7 @@ CREATE TABLE cwr_index_pic(
   iid INT PRIMARY KEY AUTO_INCREMENT, 
   iid_id INT,                  #图片编号
   img VARCHAR(128),            #图片路径
-  title VARCHAR(64)           #标题
+  title VARCHAR(64)            #标题
 );
 
 /***** 服装商品 *****/
@@ -45,7 +45,7 @@ CREATE TABLE cwr_laptop(
   lid_id INT,                  #图片编号
   img VARCHAR(128),            #图片路径
   detail VARCHAR(128),         #商品详情
-  price DECIMAL(10, 2),         #价格
+  price DECIMAL(10, 2),        #价格
   sex INT,                     #性别
   size VARCHAR(32),            #尺码
   brand VARCHAR(128),          #品牌
@@ -58,7 +58,7 @@ CREATE TABLE cwr_laptop(
   promise VARCHAR(32),         #承诺
   details VARCHAR(256),        #商品描述
   brand_img VARCHAR(128),      #品牌图片
-  products VARCHAR(512)       #品牌介绍
+  products VARCHAR(512)        #品牌介绍
 );
 
 /****** 详情页商品图片 sm md lg ******/
@@ -68,6 +68,15 @@ CREATE TABLE cwr_laptop_pic(
   sm VARCHAR(128),             #小图片路径
   md VARCHAR(128),             #中图片路径
   lg VARCHAR(128)              #大图片路径
+);
+
+/******* 购物车条目 *******/
+CREATE TABLE cwr_shoppingcart_item(
+  iid INT PRIMARY KEY AUTO_INCREMENT,
+  uname VARCHAR(32),          #用户编号
+  lid INT,                    #商品编号
+  count INT,                  #购买数量
+  checked BOOLEAN             #是否已勾选，确定购买
 );
 
 /************ 超级管理员 **************/
@@ -186,14 +195,14 @@ INSERT INTO cwr_laptop VALUES
 (NULL, 9, 'http://127.0.0.1:3000/img/laptop_img/1557146940195493.jpg', '儿童椰子香草味有机洗手液', 168, null, null, 'MANTIS 麦恩缇斯', null, '儿童用品', null, null, null, '218ML', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img/detail_img/brand_img/1554629854367516.png', '麦恩缇斯专注于有机知识理念的传播，坚持做有机 环保的实践者，以关爱地球生态、关注人类健康为核心理念，面向普通大众推广有机生活概念，并致 力将高品质有机产品带给每一个家庭。 所有产品均原产自于美国，并且均获得美国农业协会的USDA有 机认证。'), 
 (NULL, 9, 'http://127.0.0.1:3000/img/laptop_img/1557147132045193.jpg', '儿童香橙味有机洗手液', 168, null, null, 'MANTIS 麦恩缇斯', null, '儿童用品', null, null, null, '218ML', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img/detail_img/brand_img/1554629854367516.png', '麦恩缇斯专注于有机知识理念的传播，坚持做有机 环保的实践者，以关爱地球生态、关注人类健康为核心理念，面向普通大众推广有机生活概念，并致 力将高品质有机产品带给每一个家庭。 所有产品均原产自于美国，并且均获得美国农业协会的USDA有 机认证。'), 
 (NULL, 9, 'http://127.0.0.1:3000/img/laptop_img/1557147360868122.jpg', '儿童葡萄柚味有机洗手液', 168, null, null, 'MANTIS 麦恩缇斯', null, '儿童用品', null, null, null, '218ML', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img/detail_img/brand_img/1554629854367516.png', '麦恩缇斯专注于有机知识理念的传播，坚持做有机 环保的实践者，以关爱地球生态、关注人类健康为核心理念，面向普通大众推广有机生活概念，并致 力将高品质有机产品带给每一个家庭。 所有产品均原产自于美国，并且均获得美国农业协会的USDA有 机认证。'),
-(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390680737432.jpg', '英国爱他美奶粉1段4x800g', 677, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img_detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
-(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390680602238.jpg', '英国爱他美奶粉2段4x800g', 677, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img_detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
-(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390681318780.jpg', '英国爱他美奶粉3段4x800g', 629, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img_detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
-(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390681456182.jpg', '英国爱他美奶粉4段4x800g', 629, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img_detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
-(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/0056673_babies-face-cream.jpeg', '挚爱保湿面霜', 458, null, null, 'BONPOINT', null, '护肤家具', null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null), 
-(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/1539155704413113.jpg', '可拆卸帽短款羽绒服', 299, null, null, 'WORLD OF WORDS', null, '上衣', null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null), 
-(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/1553759023387590.jpg', '挚爱保湿面霜（国外预售 限量1000）', 489, null, null, 'BONPOINT', null, '护肤家具', null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null), 
-(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/1521446060340527.jpg', '淡紫色冰激凌印花T恤裙', 249, null, null, 'STELLA MCCARTNEY KIDS', null, '裙子', null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null);
+(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390680737432.jpg', '英国爱他美奶粉1段4x800g', 677, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img/detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
+(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390680602238.jpg', '英国爱他美奶粉2段4x800g', 677, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img/detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
+(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390681318780.jpg', '英国爱他美奶粉3段4x800g', 629, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img/detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
+(NULL, 10, 'http://127.0.0.1:3000/img/laptop_img/1557390681456182.jpg', '英国爱他美奶粉4段4x800g', 629, null, null, 'APTAMIL', null, '英国超市', null, null, null, '4x800g', '英国直邮(满499包邮)', null, 'http://127.0.0.1:3000/img/detail_img/brand_img/1557371964182585.jpg', '爱他美是英国销量第一的婴幼儿奶粉，因其最接近母乳的成分，成为许多英国家庭医生(GP)推荐的第一品牌奶粉。英国爱他美属于德国美乐宝Milupa公司，目前归属于法国达能集团旗下，是全球婴幼儿配方奶粉的最大的提供商之一，公司的战略遍及全球，除了英国爱他美，我们常见的还有德国爱他美、意大利爱他美、新西兰爱他美等等，需要知道的是他们都来自同一个集团，不同国家销售的奶粉奶源不同而已，配方也大体相似。英国爱他美奶粉分普通婴幼儿配方奶粉及特殊配方奶粉'),
+(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/0056673_babies-face-cream.jpeg', '挚爱保湿面霜', 458, null, null, 'BONPOINT', null, null, null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null), 
+(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/1539155704413113.jpg', '可拆卸帽短款羽绒服', 299, null, null, 'WORLD OF WORDS', null, null, null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null), 
+(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/1553759023387590.jpg', '挚爱保湿面霜（国外预售 限量1000）', 489, null, null, 'BONPOINT', null, null, null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null), 
+(NULL, 11, 'http://127.0.0.1:3000/img/detail_img/like/1521446060340527.jpg', '淡紫色冰激凌印花T恤裙', 249, null, null, 'STELLA MCCARTNEY KIDS', null, null, null, null, null, 'One Size', '英国直邮(满499包邮)', null, null, null);
 
 
 /****** 详情页商品图片 sm md lg ******/
@@ -335,6 +344,10 @@ INSERT INTO cwr_laptop_pic VALUES
 (NULL, 49, 'http://127.0.0.1:3000/img/detail_img/sm/1557390681318780.jpg', 'http://127.0.0.1:3000/img/detail_img/md/1557390681318780.jpg', 'http://127.0.0.1:3000/img/detail_img/lg/1557390681318780.jpg'),
 (NULL, 50, 'http://127.0.0.1:3000/img/detail_img/sm/1557390681456182.jpg', 'http://127.0.0.1:3000/img/detail_img/md/1557390681456182.jpg', 'http://127.0.0.1:3000/img/detail_img/lg/1557390681456182.jpg');
 
+/******* 购物车条目 *******/
+INSERT INTO cwr_shoppingcart_item VALUES
+(NULL, '13371919982', 15, 5, 1),
+(NULL, '13371919982', 16, 3, 1);
 
 
 /************** 超级管理员插入数据 **************/
