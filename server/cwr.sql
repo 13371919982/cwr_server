@@ -76,7 +76,7 @@ CREATE TABLE cwr_shoppingcart_item(
   uname VARCHAR(32),          #用户编号
   lid INT,                    #商品编号
   count INT,                  #购买数量
-  checked BOOLEAN             #是否已勾选，确定购买
+  isChecked BOOLEAN           #是否已勾选，确定购买
 );
 
 /************ 超级管理员 **************/
@@ -90,7 +90,7 @@ CREATE TABLE cwr_admin(
 /** 管理员权限列表 **/
 CREATE TABLE cwr_privilege(
   pid INT PRIMARY KEY AUTO_INCREMENT,                    
-  title VARCHAR(32),                                     #权限名称                            
+  title VARCHAR(32),                                     #权限名称
   url VARCHAR(128),                                      #权限路劲
   parentId INT DEFAULT NULL,                             #权限编号
   FOREIGN KEY(parentId) REFERENCES cwr_privilege(pid)    
@@ -108,8 +108,8 @@ CREATE TABLE cwr_admin_privilege(
 /*********** 数据插入 ***********/
 /* 用户信息 */
 INSERT INTO cwr_user VALUES
-(NULL, '13371919982', password('123456'), '690245843@qq.com', '13371919982', '吴普祥', '1'), 
-(NULL, '17317860585', password('123456'), '151718178@qq.com', '17317860585', '肖晨晨', '0');
+(NULL, '13371919982', '123456', '690245843@qq.com', '13371919982', '吴普祥', '1'), 
+(NULL, '17317860585', '123456', '151718178@qq.com', '17317860585', '肖晨晨', '0');
 
 /** 首页轮播广告商品 **/
 INSERT INTO cwr_index_carousel VALUES
@@ -346,8 +346,8 @@ INSERT INTO cwr_laptop_pic VALUES
 
 /******* 购物车条目 *******/
 INSERT INTO cwr_shoppingcart_item VALUES
-(NULL, '13371919982', 15, 5, 1),
-(NULL, '13371919982', 16, 3, 1);
+(NULL, '13371919982', 15, 5, true),
+(NULL, '13371919982', 16, 3, true);
 
 
 /************** 超级管理员插入数据 **************/
