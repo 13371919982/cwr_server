@@ -109,14 +109,4 @@ router.get('/color',(req,res)=>{
   })
 })
 
-// // 9.后台管理 分页查询
-// router.get('/color',(req,res)=>{
-//   let color=req.query.color;
-//   let sql='select*from cwr_laptop where color=?';
-//   pool.query(sql,[color],(err,result)=>{
-//     if(err) throw err;
-//     res.send(result);
-//   })
-// })
-
 module.exports=router;

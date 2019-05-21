@@ -32,7 +32,29 @@ router.get('/like',(req,res)=>{
   })
 })
 
-// 4./addcar 加入购物车
+// 4./productLid 查询匹配重复的商品
+router.get('/productLid',(req,res)=>{
+  let uname=req.query.uname;
+  let lid=req.query.lid;
+  let sql='select*from cwr_shoppingcart_item where uname=? and lid=?';
+  pool.query(sql,[uname,lid],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
+// 5./update 如果购物车清单商品重复 只修改数量
+router.get('/update',(req,res)=>{
+  let lid=req.query.lid;
+  let count=req.query.count;
+  let sql='update cwr_shoppingcart_item set count=count+? where lid=?';
+  pool.query(sql,[count,lid],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
+// 6./addcar 加入购物车
 router.get('/addcar',(req,res)=>{
   let sql='insert into cwr_shoppingcart_item set ?';
   pool.query(sql,[req.query],(err,result)=>{
