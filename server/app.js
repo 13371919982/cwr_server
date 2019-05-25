@@ -33,6 +33,10 @@ app.use( cors({
 
 app.use(session({
   secret: "128位随机字符",
+  cookie:{
+    // 过期时间ms
+    maxAge:60*1000*30
+  },
   resave: false,
   saveUninitialized: true
 }))
