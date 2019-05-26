@@ -70,14 +70,31 @@ CREATE TABLE cwr_laptop_pic(
   lg VARCHAR(128)              #大图片路径
 );
 
-/******* 购物车条目 *******/
+/******* 加入收藏 *******/
+CREATE TABLE cwr_additem(
+  aid INT PRIMARY KEY AUTO_INCREMENT,
+  uname VARCHAR(32),          #用户编号
+  lid INT,                    #商品编号
+);
+
+/******** 购物车条目 ********/
 CREATE TABLE cwr_shoppingcart_item(
   iid INT PRIMARY KEY AUTO_INCREMENT,
   uname VARCHAR(32),          #用户编号
   lid INT,                    #商品编号
   count INT,                  #购买数量
-  isChecked BOOLEAN           #是否已勾选，确定购买
+  isChecked BOOLEAN           #是否已勾选
 );
+
+/********* 用户订单 *********/
+CREATE TABLE cwr_order(
+  oid INT PRIMARY KEY AUTO_INCREMENT,
+  uname VARCHAR(32),      #用户账号
+    /*oid_id INT,           #订单编号*/ 
+  lid INT,                #产品编号
+  count INT               #购买数量
+);
+
 
 /************ 超级管理员 **************/
 /* 管理员账号 */ 
@@ -344,10 +361,18 @@ INSERT INTO cwr_laptop_pic VALUES
 (NULL, 49, 'http://127.0.0.1:3000/img/detail_img/sm/1557390681318780.jpg', 'http://127.0.0.1:3000/img/detail_img/md/1557390681318780.jpg', 'http://127.0.0.1:3000/img/detail_img/lg/1557390681318780.jpg'),
 (NULL, 50, 'http://127.0.0.1:3000/img/detail_img/sm/1557390681456182.jpg', 'http://127.0.0.1:3000/img/detail_img/md/1557390681456182.jpg', 'http://127.0.0.1:3000/img/detail_img/lg/1557390681456182.jpg');
 
-/******* 购物车条目 *******/
+/******* 加入收藏 *******/
+INSERT INTO cwr_additem VALUES
+(NULL, '13371919982', 15),
+(NULL, '13371919982', 16);
+
+/******** 购物车条目 ********/
 INSERT INTO cwr_shoppingcart_item VALUES
 (NULL, '13371919982', 15, 5, true),
 (NULL, '13371919982', 16, 3, true);
+
+/********* 用户订单 *********/
+INSERT INTO cwr_order VALUES
 
 
 /************** 超级管理员插入数据 **************/

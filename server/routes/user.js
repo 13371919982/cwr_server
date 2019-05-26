@@ -7,13 +7,14 @@ var router=express.Router();
 
 // 1.用户登录
 router.post('/login',(req,res)=>{
+  let sessionID=req.sessionID;
   let uname=req.body.uname;
   let upwd=req.body.upwd;
   let sql='select*from cwr_user where uname=? and upwd=?';
   pool.query(sql,[uname,upwd],(err,result)=>{
     if(err) throw err;
     if(result.length>0){
-      res.send(uname);
+      res.send(sessionID);
     }
     else
       res.send('1');

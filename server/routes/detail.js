@@ -5,7 +5,7 @@ let router=express.Router();
 // 1./detail
 router.get('/detail',(req,res)=>{
   let lid=req.query.lid;
-  let sql='select * from cwr_laptop l inner join cwr_laptop_pic d on l.lid =d.did_id where lid=?';
+  let sql='select * from cwr_laptop l inner join cwr_laptop_pic d on l.lid=d.did_id where lid=?';
   pool.query(sql,[lid],(err,result)=>{
     if(err) throw err;
     res.send(result);
@@ -60,6 +60,36 @@ router.get('/addcar',(req,res)=>{
   pool.query(sql,[req.query],(err,result)=>{
     if(err) throw err;
     res.send(result);
+  })
+})
+
+// 7./additemlid 验证是否加入收藏
+router.get('/additemlid',(req,res)=>{
+  let uname=req.query.uname;
+  let lid=req.query.lid;
+  let sql='select*from cwr_additem where uname=? and lid=?';
+  pool.query(sql,[uname,lid],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
+// 8./additem 加入收藏
+router.get('/additem',(req,res)=>{
+  let sql='insert into cwr_additem set ?';
+  pool.query(sql,[req.query],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
+// 9./deleteAdditem 取消收藏
+router.get('/deleteAdditem',(req,res)=>{
+  let lid=req.query.lid;
+  let sql='delete from cwr_additem where lid=?';
+  pool.query(sql,[lid],(err,result)=>{
+    if(err) throw err;
+    res.send('1');
   })
 })
 
