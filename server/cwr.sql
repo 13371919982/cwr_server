@@ -10,9 +10,8 @@ CREATE TABLE cwr_user(
   uname VARCHAR(32),           #用户账号
   upwd VARCHAR(32),            #用户密码
   email VARCHAR(64),           #用户邮箱
-  phone VARCHAR(16),           #用户号码
-  user_name VARCHAR(32),       #真实姓名
-  gender INT                   #用户性别  0-女  1-男
+  year VARCHAR(16),            #宝宝出生年
+  sex INT                      #宝宝性别  0-女  1-男
 );
 
 /** 首页轮播广告商品 **/
@@ -74,7 +73,7 @@ CREATE TABLE cwr_laptop_pic(
 CREATE TABLE cwr_additem(
   aid INT PRIMARY KEY AUTO_INCREMENT,
   uname VARCHAR(32),          #用户编号
-  lid INT,                    #商品编号
+  lid INT                     #商品编号
 );
 
 /******** 购物车条目 ********/
@@ -125,8 +124,8 @@ CREATE TABLE cwr_admin_privilege(
 /*********** 数据插入 ***********/
 /* 用户信息 */
 INSERT INTO cwr_user VALUES
-(NULL, '13371919982', '123456', '690245843@qq.com', '13371919982', '吴普祥', '1'), 
-(NULL, '17317860585', '123456', '151718178@qq.com', '17317860585', '肖晨晨', '0');
+(NULL, '13371919982', '123456', '690245843@qq.com', '2017', '0'),
+(NULL, '17317860585', '123456', '151718178@qq.com', '2017', '0');
 
 /** 首页轮播广告商品 **/
 INSERT INTO cwr_index_carousel VALUES
@@ -372,7 +371,7 @@ INSERT INTO cwr_shoppingcart_item VALUES
 (NULL, '13371919982', 16, 3, true);
 
 /********* 用户订单 *********/
-INSERT INTO cwr_order VALUES
+-- INSERT INTO cwr_order VALUES
 
 
 /************** 超级管理员插入数据 **************/
