@@ -13,9 +13,8 @@ router.post('/login',(req,res)=>{
   let sql='select*from cwr_user where uname=? and upwd=?';
   pool.query(sql,[uname,upwd],(err,result)=>{
     if(err) throw err;
-    if(result.length>0){
+    if(result.length>0)
       res.send(sessionID);
-    }
     else
       res.send('1');
   });
@@ -27,11 +26,10 @@ router.get('/code',(req,res)=>{
   let sql='select uname from cwr_user where uname=?';
   pool.query(sql,[uname],(err,result)=>{
     if(err) throw err;
-    if(result.length>0){
+    if(result.length>0)
       res.send('用户名被占用')
-    }else{
+    else
       res.send('1')
-    }
   })
 })
 
@@ -60,11 +58,11 @@ router.get('/email',(req,res)=>{
   let sql='select email from cwr_user where email=?';
   pool.query(sql,[email],(err,result)=>{
     if(err) throw err;
-    if(result.length>0){
-      res.send('邮箱已被占用！');
-    }else{
-      res.send('邮箱可用！');
-    }
+    if(result.length>0)
+      res.send('邮箱已被占用');
+    else
+      res.send('邮箱可用');
+    
   })
 })
 
@@ -81,7 +79,18 @@ router.post('/update',(req,res)=>{
   })
 })
 
-// 7./list 后台管理 用户列表
+// 7./updatepwd 用户密码修改
+router.post('/updatepwd',(req,res)=>{
+  let uname=req.body.uname;
+  let upwd=req.body.upwd;
+  let sql='update cwr_user set upwd=? where uname=?'
+  pool.query(sql,[upwd,uname],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
+// 8./list 后台管理 用户列表
 router.get('/list',(req,res)=>{
   let sql=`select*from cwr_user`;
   pool.query(sql,(err,result)=>{

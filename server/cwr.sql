@@ -124,8 +124,8 @@ CREATE TABLE cwr_admin_privilege(
 /*********** 数据插入 ***********/
 /* 用户信息 */
 INSERT INTO cwr_user VALUES
-(NULL, '13371919982', '123456', '690245843@qq.com', '2017', '0'),
-(NULL, '17317860585', '123456', '151718178@qq.com', '2017', '0');
+(NULL, '13371919982', password('123456'), '690245843@qq.com', '2017', '0'),
+(NULL, '17317860585', password('123456'), '151718178@qq.com', '2017', '0');
 
 /** 首页轮播广告商品 **/
 INSERT INTO cwr_index_carousel VALUES

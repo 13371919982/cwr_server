@@ -23,4 +23,15 @@ router.get('/delete',(req,res)=>{
   })
 })
 
+// 3./count 数量 
+router.get('/count',(req,res)=>{
+  let count=req.query.count;
+  let uname=req.query.uname;
+  let sql='update cwr_shoppingcart_item set count=count+? where uname=?';
+  pool.query(sql,[count,uname],(err,result)=>{
+    if(err) throw err;
+    console.log(count);
+  })
+})
+
 module.exports=router;
