@@ -7,6 +7,7 @@ const index = require('./routes/index');
 const product = require('./routes/product');
 const detail = require('./routes/detail');
 const shoppingcart = require('./routes/shoppingcart');
+const order = require('./routes/order');
 
 /****** APP ******/
 const news = require('./routes/news');
@@ -51,6 +52,8 @@ app.use( '/product', product);
 app.use( '/detail', detail);
 // 购物车挂载
 app.use( '/shoppingcart', shoppingcart);
+// 订单挂载
+app.use( '/order', order);
 
 /****** APP ******/
 app.use( '/news', news);
