@@ -3,9 +3,9 @@ const pool=require('../pool');
 let router=express.Router();
 
 // 1.keyWords 关键字查询
-router.get('/keyWords',(req,res)=>{
-  let kws=req.query.kws;
-  let sql=`select*from cwr_laptop where detail like "%${kws}%"`
+router.get('/kwords',(req,res)=>{
+  let kwords=req.query.kwords;
+  let sql=`select*from cwr_laptop where detail like "%${kwords}%"`
   pool.query(sql,(err,result)=>{
     if(err) throw err;
     res.send(result)

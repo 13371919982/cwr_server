@@ -90,7 +90,17 @@ router.post('/updatepwd',(req,res)=>{
   })
 })
 
-// 8./list 后台管理 用户列表
+// 8./additemList 收藏列表
+router.get('/additemList',(req,res)=>{
+  let uname=req.query.uname;
+  let sql='select * from cwr_laptop l inner join cwr_additem a on l.lid=a.lid inner join cwr_user u on a.uname=u.uname where a.uname=?';
+  pool.query(sql,[uname],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
+// 9./list 后台管理 用户列表
 router.get('/list',(req,res)=>{
   let sql=`select*from cwr_user`;
   pool.query(sql,(err,result)=>{

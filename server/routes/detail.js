@@ -63,7 +63,7 @@ router.get('/addcar',(req,res)=>{
   })
 })
 
-// 7./additemlid 验证是否加入收藏
+// 7./additemlid 验证是否有收藏
 router.get('/additemlid',(req,res)=>{
   let uname=req.query.uname;
   let lid=req.query.lid;
