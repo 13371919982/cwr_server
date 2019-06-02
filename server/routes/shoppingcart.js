@@ -15,9 +15,10 @@ router.get('/cartList',(req,res)=>{
 
 // 2./delete 删除购物车商品
 router.get('/delete',(req,res)=>{
+  let uname=req.query.uname;
   let lid=req.query.lid;
-  let sql='delete from cwr_shoppingcart_item where lid=?'
-  pool.query(sql,[lid],(err,result)=>{
+  let sql='delete from cwr_shoppingcart_item where uname=? and lid=?'
+  pool.query(sql,[uname,lid],(err,result)=>{
     if(err) throw err;
     res.send(result);
   })

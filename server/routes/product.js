@@ -65,6 +65,7 @@ router.get('/desc',(req,res)=>{
 // 5.1 /sex
 router.get('/sex',(req,res)=>{
   let sex=req.query.sex;
+  console.log(sex);
   sex=='男'?sex=1:sex=0;
   let sql='select*from cwr_laptop where sex=?';
   pool.query(sql,[sex],(err,result)=>{

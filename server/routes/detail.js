@@ -86,10 +86,11 @@ router.get('/additem',(req,res)=>{
 // 9./deleteAdditem 取消收藏
 router.get('/deleteAdditem',(req,res)=>{
   let lid=req.query.lid;
-  let sql='delete from cwr_additem where lid=?';
-  pool.query(sql,[lid],(err,result)=>{
+  let uname=req.query.uname;
+  let sql='delete from cwr_additem where uname=? and lid=?';
+  pool.query(sql,[uname,lid],(err,result)=>{
     if(err) throw err;
-    res.send('1');
+    res.send(result);
   })
 })
 

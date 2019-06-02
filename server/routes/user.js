@@ -13,10 +13,7 @@ router.post('/login',(req,res)=>{
   let sql='select*from cwr_user where uname=? and upwd=?';
   pool.query(sql,[uname,upwd],(err,result)=>{
     if(err) throw err;
-    if(result.length>0)
-      res.send(sessionID);
-    else
-      res.send('1');
+    res.send(result)
   });
 });
 
@@ -26,10 +23,7 @@ router.get('/code',(req,res)=>{
   let sql='select uname from cwr_user where uname=?';
   pool.query(sql,[uname],(err,result)=>{
     if(err) throw err;
-    if(result.length>0)
-      res.send('用户名被占用')
-    else
-      res.send('1')
+    res.send(result);
   })
 })
 
@@ -38,7 +32,7 @@ router.post('/reg',(req,res)=>{
   let sql='insert into cwr_user set ?';
   pool.query(sql,[req.body],(err,result)=>{
     if(err) throw err;
-    res.send('恭喜！注册成功');
+    res.send(result);
   })
 })
 
@@ -52,17 +46,13 @@ router.get('/detail',(req,res)=>{
   })
 })
 
-// 5./isemail
+// 5./email
 router.get('/email',(req,res)=>{
   let email=req.query.email;
   let sql='select email from cwr_user where email=?';
   pool.query(sql,[email],(err,result)=>{
     if(err) throw err;
-    if(result.length>0)
-      res.send('邮箱已被占用');
-    else
-      res.send('邮箱可用');
-    
+    res.send(result);
   })
 })
 
@@ -100,7 +90,8 @@ router.get('/additemList',(req,res)=>{
   })
 })
 
-// 9./list 后台管理 用户列表
+/*********** 后台管理 用户列表 ***********/
+// 1./list 
 router.get('/list',(req,res)=>{
   let sql=`select*from cwr_user`;
   pool.query(sql,(err,result)=>{
